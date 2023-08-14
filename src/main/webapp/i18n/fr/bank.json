@@ -1,0 +1,25 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "bank": {
+      "home": {
+        "title": "Banks",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Bank",
+        "createOrEditLabel": "Créer ou éditer un Bank",
+        "notFound": "Aucun Bank trouvé"
+      },
+      "created": "Un nouveau Bank a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Bank avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Bank avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Bank {{ id }} ?"
+      },
+      "detail": {
+        "title": "Bank"
+      },
+      "id": "ID",
+      "bankNumber": "Bank Number",
+      "bankAccount": "Bank Account"
+    }
+  }
+}

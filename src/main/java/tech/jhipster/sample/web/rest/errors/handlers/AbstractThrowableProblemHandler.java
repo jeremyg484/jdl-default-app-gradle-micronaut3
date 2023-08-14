@@ -1,0 +1,16 @@
+package tech.jhipster.sample.web.rest.errors.handlers;
+
+import io.micronaut.http.HttpRequest;
+import io.micronaut.http.HttpResponse;
+import io.micronaut.http.server.exceptions.ExceptionHandler;
+import jakarta.inject.Singleton;
+import org.zalando.problem.AbstractThrowableProblem;
+
+@Singleton
+public class AbstractThrowableProblemHandler extends ProblemHandler implements ExceptionHandler<AbstractThrowableProblem, HttpResponse> {
+
+    @Override
+    public HttpResponse handle(HttpRequest request, AbstractThrowableProblem exception) {
+        return create(exception, request, exception);
+    }
+}

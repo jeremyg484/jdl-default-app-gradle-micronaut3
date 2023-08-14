@@ -1,0 +1,24 @@
+dockerfile {
+    baseImage = "openjdk:15-alpine"
+    args("-Xmx128m")
+}
+
+dockerBuild {
+    images = ["jhipsterSampleApplication:$project.version", "jhipsterSampleApplication:latest"]
+}
+
+task copyIntoLayers (type: Copy) {
+    from 'build/resources/main/'
+    into 'build/layers/resources'
+}
+
+dockerBuild.dependsOn copyIntoLayers
+
+dockerfileNative {
+    baseImage = "oracle/graalvm-ce:20.3.0-java11"
+    args("-Xmx64m")
+}
+
+dockerBuildNative {
+    images = ["jhipsterSampleApplication:$project.version", "jhipsterSampleApplication:latest"]
+}

@@ -1,0 +1,25 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "goldenBadge": {
+      "home": {
+        "title": "GoldenBadges",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Golden Badge",
+        "createOrEditLabel": "Créer ou éditer un Golden Badge",
+        "notFound": "Aucun Golden Badge trouvé"
+      },
+      "created": "Un nouveau Golden Badge a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Golden Badge avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Golden Badge avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Golden Badge {{ id }} ?"
+      },
+      "detail": {
+        "title": "Golden Badge"
+      },
+      "id": "ID",
+      "name": "Name",
+      "iden": "Iden"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "testRootTheLabel": {
+      "home": {
+        "title": "The Labels",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new The Label",
+        "createOrEditLabel": "Create or edit a The Label",
+        "notFound": "No The Labels found"
+      },
+      "created": "A new The Label is created with identifier {{ param }}",
+      "updated": "A The Label is updated with identifier {{ param }}",
+      "deleted": "A The Label is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete The Label {{ id }}?"
+      },
+      "detail": {
+        "title": "The Label"
+      },
+      "id": "ID",
+      "labelName": "Label Name",
+      "operation": "Operation"
+    }
+  }
+}

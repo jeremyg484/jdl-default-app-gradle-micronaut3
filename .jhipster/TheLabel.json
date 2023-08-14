@@ -1,0 +1,31 @@
+{
+  "applications": ["jhipsterSampleApplication"],
+  "changelogDate": "20230814231451",
+  "clientRootFolder": "test-root",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "the_label",
+  "fields": [
+    {
+      "fieldName": "labelName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength"],
+      "fieldValidateRulesMinlength": "3"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TheLabel",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "operation",
+      "otherEntityRelationshipName": "theLabel",
+      "ownerSide": false,
+      "relationshipName": "operation",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

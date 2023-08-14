@@ -1,0 +1,24 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "identifier": {
+      "home": {
+        "title": "Identifiers",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Identifier",
+        "createOrEditLabel": "Créer ou éditer un Identifier",
+        "notFound": "Aucun Identifier trouvé"
+      },
+      "created": "Un nouveau Identifier a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Identifier avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Identifier avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Identifier {{ id }} ?"
+      },
+      "detail": {
+        "title": "Identifier"
+      },
+      "id": "ID",
+      "name": "Name"
+    }
+  }
+}

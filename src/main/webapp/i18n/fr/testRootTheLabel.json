@@ -1,0 +1,25 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "testRootTheLabel": {
+      "home": {
+        "title": "TheLabels",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau The Label",
+        "createOrEditLabel": "Créer ou éditer un The Label",
+        "notFound": "Aucun The Label trouvé"
+      },
+      "created": "Un nouveau The Label a été créé avec l'identifiant {{ param }}",
+      "updated": "Le The Label avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le The Label avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le The Label {{ id }} ?"
+      },
+      "detail": {
+        "title": "The Label"
+      },
+      "id": "ID",
+      "labelName": "Label Name",
+      "operation": "Operation"
+    }
+  }
+}

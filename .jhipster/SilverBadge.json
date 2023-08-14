@@ -1,0 +1,29 @@
+{
+  "applications": ["jhipsterSampleApplication"],
+  "changelogDate": "20230814232351",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "silver_badge",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "SilverBadge",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "identifier",
+      "otherEntityRelationshipName": "silverBadge",
+      "relationshipName": "iden",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "service": "serviceClass"
+}

@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  jhipstersampleapplication-app:
+    image: jhipstersampleapplication
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - MICRONAUT_ENVIRONMENTS=prod
+      - JDBC_URL=jdbc:postgresql://jhipstersampleapplication-postgresql:5432/jhipsterSampleApplication
+      - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
+    ports:
+      - 8080:8080
+  jhipstersampleapplication-postgresql:
+    extends:
+      file: postgresql.yml
+      service: jhipstersampleapplication-postgresql

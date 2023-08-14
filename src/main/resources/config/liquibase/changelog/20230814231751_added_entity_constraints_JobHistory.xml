@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity JobHistory.
+    -->
+    <changeSet id="20230814231751-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="job_history_id"
+                                 baseTableName="rel_job_history__department"
+                                 constraintName="fk_rel_job_history__department__job_history_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="job_history"/>
+
+        <addForeignKeyConstraint baseColumnNames="department_id"
+                                 baseTableName="rel_job_history__department"
+                                 constraintName="fk_rel_job_history__department__department_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="department"/>
+
+        <addForeignKeyConstraint baseColumnNames="job_history_id"
+                                 baseTableName="rel_job_history__job"
+                                 constraintName="fk_rel_job_history__job__job_history_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="job_history"/>
+
+        <addForeignKeyConstraint baseColumnNames="job_id"
+                                 baseTableName="rel_job_history__job"
+                                 constraintName="fk_rel_job_history__job__job_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="job"/>
+
+        <addForeignKeyConstraint baseColumnNames="job_history_id"
+                                 baseTableName="rel_job_history__emp"
+                                 constraintName="fk_rel_job_history__emp__job_history_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="job_history"/>
+
+        <addForeignKeyConstraint baseColumnNames="emp_id"
+                                 baseTableName="rel_job_history__emp"
+                                 constraintName="fk_rel_job_history__emp__emp_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="employee"/>
+    </changeSet>
+</databaseChangeLog>

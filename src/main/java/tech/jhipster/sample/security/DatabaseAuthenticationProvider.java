@@ -1,0 +1,70 @@
+package tech.jhipster.sample.security;
+
+import io.micronaut.core.annotation.Nullable;
+import io.micronaut.http.HttpRequest;
+import io.micronaut.security.authentication.AuthenticationProvider;
+import io.micronaut.security.authentication.AuthenticationRequest;
+import io.micronaut.security.authentication.AuthenticationResponse;
+import io.micronaut.validation.validator.Validator;
+import io.reactivex.rxjava3.core.Flowable;
+import jakarta.inject.Singleton;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+import javax.validation.ConstraintViolation;
+import org.reactivestreams.Publisher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import tech.jhipster.sample.domain.Authority;
+import tech.jhipster.sample.domain.User;
+import tech.jhipster.sample.repository.UserRepository;
+import tech.jhipster.sample.web.rest.vm.LoginVM;
+
+@Singleton
+public class DatabaseAuthenticationProvider implements AuthenticationProvider {
+
+    private final Logger log = LoggerFactory.getLogger(DatabaseAuthenticationProvider.class);
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final Validator validator;
+
+    public DatabaseAuthenticationProvider(UserRepository userRepository, PasswordEncoder passwordEncoder, Validator validator) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.validator = validator;
+    }
+
+    @Override
+    public Publisher<AuthenticationResponse> authenticate(
+        @Nullable HttpRequest<?> httpRequest,
+        AuthenticationRequest<?, ?> authenticationRequest
+    ) {
+        LoginVM loginAttempt = new LoginVM();
+        loginAttempt.setUsername(authenticationRequest.getIdentity().toString());
+        loginAttempt.setPassword(authenticationRequest.getSecret().toString());
+
+        log.debug("Authenticating {}", loginAttempt.getUsername());
+
+        Set<ConstraintViolation<LoginVM>> violations = validator.validate(loginAttempt);
+        if (violations.size() == 0) {
+            return Flowable.just(
+                userRepository
+                    .findOneByLoginIgnoreCaseOrEmail(loginAttempt.getUsername(), loginAttempt.getUsername())
+                    .filter(user -> passwordEncoder.matches(loginAttempt.getPassword(), user.getPassword()))
+                    .map(this::createMicronautSecurityUser)
+                    .orElse(new NotAuthenticatedResponse("Invalid username or password"))
+            );
+        } else {
+            log.debug("User validation failed with violations {}", violations);
+            return Flowable.just(new NotAuthenticatedResponse("Invalid username or password"));
+        }
+    }
+
+    private AuthenticationResponse createMicronautSecurityUser(User user) {
+        if (!user.getActivated()) {
+            return new NotAuthenticatedResponse("User " + user.getLogin() + " was not activated");
+        }
+        List<String> grantedAuthorities = user.getAuthorities().stream().map(Authority::getName).collect(Collectors.toList());
+        return AuthenticationResponse.success(user.getLogin(), grantedAuthorities);
+    }
+}

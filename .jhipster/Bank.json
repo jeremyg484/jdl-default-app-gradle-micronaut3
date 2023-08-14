@@ -1,0 +1,28 @@
+{
+  "applications": ["jhipsterSampleApplication"],
+  "changelogDate": "20230814231251",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "bank",
+  "fields": [
+    {
+      "fieldName": "bankNumber",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Bank",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "bankAccount",
+      "otherEntityRelationshipName": "bank",
+      "ownerSide": true,
+      "relationshipName": "bankAccount",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "no"
+}

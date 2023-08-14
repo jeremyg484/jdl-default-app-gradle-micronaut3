@@ -1,0 +1,90 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="employee">
+      <h2 data-cy="employeeDetailsHeading"><span jhiTranslate="jhipsterSampleApplicationApp.employee.detail.title">Employee</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ employee.id }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="jhipsterSampleApplicationApp.employee.firstName"
+            [ngbTooltip]="'jhipsterSampleApplicationApp.employee.help.firstName' | translate"
+            >First Name</span
+          >
+        </dt>
+        <dd>
+          <span>{{ employee.firstName }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.employee.lastName">Last Name</span></dt>
+        <dd>
+          <span>{{ employee.lastName }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.employee.email">Email</span></dt>
+        <dd>
+          <span>{{ employee.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.employee.phoneNumber">Phone Number</span></dt>
+        <dd>
+          <span>{{ employee.phoneNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.employee.hireDate">Hire Date</span></dt>
+        <dd>
+          <span>{{ employee.hireDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.employee.salary">Salary</span></dt>
+        <dd>
+          <span>{{ employee.salary }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.employee.commissionPct">Commission Pct</span></dt>
+        <dd>
+          <span>{{ employee.commissionPct }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.employee.user">User</span></dt>
+        <dd>
+          <span>{{ employee.user?.login }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.employee.manager">Manager</span></dt>
+        <dd>
+          <div *ngIf="employee.manager">
+            <a [routerLink]="['/employee', employee.manager?.id, 'view']">{{ employee.manager?.lastName }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.employee.sibag">Sibag</span></dt>
+        <dd>
+          <div *ngIf="employee.sibag">
+            <a [routerLink]="['/silver-badge', employee.sibag?.id, 'view']">{{ employee.sibag?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.employee.gobag">Gobag</span></dt>
+        <dd>
+          <div *ngIf="employee.gobag">
+            <a [routerLink]="['/golden-badge', employee.gobag?.id, 'view']">{{ employee.gobag?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.employee.department">Department</span></dt>
+        <dd>
+          <div *ngIf="employee.department">
+            <a [routerLink]="['/department', employee.department?.id, 'view']">{{ employee.department?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/employee', employee.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

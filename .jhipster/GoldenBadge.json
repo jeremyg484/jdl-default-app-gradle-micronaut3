@@ -1,0 +1,29 @@
+{
+  "applications": ["jhipsterSampleApplication"],
+  "changelogDate": "20230814232251",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "golden_badge",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "GoldenBadge",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "identifier",
+      "otherEntityRelationshipName": "goldenBadge",
+      "relationshipName": "iden",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "service": "serviceClass"
+}

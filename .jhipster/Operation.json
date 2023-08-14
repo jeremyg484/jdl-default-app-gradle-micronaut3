@@ -1,0 +1,47 @@
+{
+  "applications": ["jhipsterSampleApplication"],
+  "changelogDate": "20230814231551",
+  "clientRootFolder": "test-root",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "operation",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Operation",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "labelName",
+      "otherEntityName": "theLabel",
+      "otherEntityRelationshipName": "operation",
+      "ownerSide": true,
+      "relationshipName": "theLabel",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "bankAccount",
+      "otherEntityRelationshipName": "operation",
+      "relationshipName": "bankAccount",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

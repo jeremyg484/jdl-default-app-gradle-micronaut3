@@ -1,0 +1,72 @@
+dependencies {
+    testImplementation "com.h2database:h2"
+}
+
+def profiles = "prod"
+if (project.hasProperty("no-liquibase")) {
+    profiles += ",no-liquibase"
+}
+
+if (project.hasProperty("swagger")) {
+    profiles += ",swagger"
+}
+
+tasks.withType(JavaExec) {
+
+    if (System.getProperty("micronaut.environments")) {
+        jvmArgs += '-Dmicronaut.environments=' + profiles + ',' + System.getProperty("micronaut.environments")
+    } else {
+        jvmArgs += '-Dmicronaut.environments=' + profiles
+    }
+    if (gradle.startParameter.continuous) {
+        systemProperties(
+            'micronaut.io.watch.restart':'true',
+            'micronaut.io.watch.enabled':'true',
+            "micronaut.io.watch.paths":"src/main"
+        )
+    }
+}
+
+task webapp(type: NpmTask, dependsOn: "npmInstall") {
+    args = ["run", "webapp:prod"]
+    environment = [APP_VERSION: project.version]
+}
+
+task webappBuildDev(type: NpmTask, dependsOn: 'npmInstall') {
+    inputs.dir("src/main/webapp/")
+    inputs.files(fileTree('src/main/webapp/'))
+    outputs.dir("build/www/")
+    outputs.file("build/www/app/main.bundle.js")
+    args = ["run", "webapp:build"]
+}
+
+task copyIntoStatic (type: Copy) {
+    from 'build/www/'
+    into 'build/resources/main/static'
+}
+
+processResources {
+    inputs.property('version', version)
+    inputs.property('springProfiles', profiles)
+    filesMatching("**/application.yml") {
+        filter {
+            it.replace("#project.version#", version)
+        }
+        filter {
+            it.replace("#spring.profiles.active#", profiles)
+        }
+    }
+}
+
+processResources.dependsOn webapp
+
+processResources.dependsOn webappBuildDev
+copyIntoStatic.dependsOn processResources
+assemble.dependsOn copyIntoStatic
+
+npmInstall.onlyIf { shouldWebappRun() == true }
+
+def shouldWebappRun() {
+    project.hasProperty('webapp')
+}
+

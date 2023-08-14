@@ -1,0 +1,25 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "silverBadge": {
+      "home": {
+        "title": "Silver Badges",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Silver Badge",
+        "createOrEditLabel": "Create or edit a Silver Badge",
+        "notFound": "No Silver Badges found"
+      },
+      "created": "A new Silver Badge is created with identifier {{ param }}",
+      "updated": "A Silver Badge is updated with identifier {{ param }}",
+      "deleted": "A Silver Badge is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Silver Badge {{ id }}?"
+      },
+      "detail": {
+        "title": "Silver Badge"
+      },
+      "id": "ID",
+      "name": "Name",
+      "iden": "Iden"
+    }
+  }
+}

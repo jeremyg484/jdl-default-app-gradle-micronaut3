@@ -1,0 +1,9 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "JobType": {
+      "null": "",
+      "BOSS": "BOSS",
+      "SLAVE": "SLAVE"
+    }
+  }
+}

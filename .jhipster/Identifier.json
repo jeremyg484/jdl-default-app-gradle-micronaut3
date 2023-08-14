@@ -1,0 +1,21 @@
+{
+  "applications": ["jhipsterSampleApplication"],
+  "changelogDate": "20230814232451",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "identifier",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Identifier",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

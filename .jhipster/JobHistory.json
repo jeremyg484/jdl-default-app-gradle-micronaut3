@@ -1,0 +1,53 @@
+{
+  "applications": ["jhipsterSampleApplication"],
+  "changelogDate": "20230814231751",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "job_history",
+  "fields": [
+    {
+      "fieldName": "startDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "language",
+      "fieldType": "Language",
+      "fieldValues": "FRENCH,ENGLISH,SPANISH"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "JobHistory comment.",
+  "jpaMetamodelFiltering": false,
+  "name": "JobHistory",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "department",
+      "otherEntityRelationshipName": "history",
+      "ownerSide": true,
+      "relationshipName": "department",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "job",
+      "otherEntityRelationshipName": "history",
+      "ownerSide": true,
+      "relationshipName": "job",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityField": "firstName",
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "history",
+      "ownerSide": true,
+      "relationshipName": "emp",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "no"
+}
